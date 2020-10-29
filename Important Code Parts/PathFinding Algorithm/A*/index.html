@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Path Finding</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1 id="msg">Select Your Starting point</h1>
+<form name='size'>
+	<label>width:</label>
+	<input type="number" name='width' min='3' onchange="w = this.value;drawtbl()" onload="w = this.value;">
+	<label>hight:</label>
+	<input type="number" name='height' min='3' onchange="h=this.value;drawtbl()" onload="h=this.value;">
+</form>
+<div id="control">
+<button
+ id="startBtn"
+ title="It will be enable after defining the start and the end points"
+ onclick="start()">
+Find Shortest Path
+</button>
+</div>
+<table id="canvas" >
+
+</table >
+<script type="text/javascript">
+	let tableElement = document.getElementById('canvas')
+	let w = size.width.value?size.width.value:3
+	let h = size.height.value?size.height.value:3
+	var tableData= []
+	let drawtbl = ()=>{
+		let table = ''
+		for (var i = 0; i < h; i++) {
+			table+= '<tr>'
+			tableData.push([])
+			for (var j = 0; j < w; j++) {
+				table += '<td></td>'
+				tableData[i].push(0)
+			}
+			table+='</tr>'
+		}
+		tableElement.innerHTML=table
+	}
+	drawtbl()
+</script>
+<script src="main.js"></script>
+</body>
+</html>
